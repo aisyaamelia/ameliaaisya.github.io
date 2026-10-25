@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amelia Nur Aisya | Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS (Animate on Scroll) CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        paletteDark: '#030712',       // Deep Blue-Black Background
+                        paletteNavy: '#0f172a',       // Dark Slate Blue
+                        paletteRoyal: '#1e3a8a',      // Royal Blue
+                        paletteElectric: '#2563eb',   // Electric Blue
+                        paletteCyan: '#06b6d4',       // Vibrant Cyan Accent
+                        paletteGold: '#f59e0b',       // Yellow Accent
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 5s ease-in-out infinite',
+                        'float-delayed': 'float 5s ease-in-out 2.5s infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-12px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+    /* Tambahan CSS untuk efek menghilang saat elemen keluar layar */
+    [data-aos] {
+        transition-property: transform, opacity !important;
+    }
+    
+    /* Memastikan elemen kembali transparan saat di luar viewport jika mirror aktif */
+    body.aos-animate [data-aos].aos-animate {
+        opacity: 1;
+        transform: translateY(0);
+    }
+</style>
+
+    <style>
+        /* Custom Styling for Full Blue Theme with Yellow Accent */
+        body {
+            background-color: #030712;
+            color: #f8fafc;
+        }
+        .nav-pill {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(37, 99, 235, 0.3);
+            box-shadow: 0 10px 30px -10px rgba(14, 165, 233, 0.3);
+        }
+        .glass-card {
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(37, 99, 235, 0.25);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            border-color: rgba(6, 182, 212, 0.5);
+            box-shadow: 0 12px 35px -10px rgba(14, 165, 233, 0.35);
+        }
+        /* Blue to Yellow Gradient Text */
+        .text-gradient-blue-yellow {
+            background: linear-gradient(135deg, #60A5FA 0%, #3B82F6 40%, #FBBF24 80%, #F59E0B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .btn-palette-glow {
+            background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #0891b2 100%);
+            box-shadow: 0 0 25px rgba(37, 99, 235, 0.5);
+            transition: all 0.3s ease;
+        }
+        .btn-palette-glow:hover {
+            box-shadow: 0 0 35px rgba(6, 182, 212, 0.7);
+            transform: translateY(-2px);
+        }
+        .badge-pill {
+            background: rgba(15, 23, 42, 0.75);
+            border: 1px solid rgba(37, 99, 235, 0.35);
+            backdrop-filter: blur(8px);
+        }
+
+        /* 3D Flip Card Container Styles */
+        .flip-card-container {
+            perspective: 1200px;
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+        .flip-card-inner.flipped {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 1.25rem;
+            overflow: hidden;
+        }
+        .flip-card-back {
+            transform: rotateY(180deg);
+        }
+
+        /* Manual Hover Flip Card Styles for Education & Experience */
+        .hover-flip-container {
+            perspective: 1200px;
+        }
+        .hover-flip-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+        .hover-flip-container:hover .hover-flip-inner {
+            transform: rotateY(180deg);
+        }
+        .hover-flip-front, .hover-flip-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 1rem;
+        }
+        .hover-flip-back {
+            transform: rotateY(180deg);
+        }
+
+        /* Photo Frame Glow Effect */
+        .photo-glow-frame {
+            position: relative;
+        }
+        .photo-glow-frame::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            background: linear-gradient(135deg, #2563eb, #06b6d4, #f59e0b);
+            border-radius: 2rem;
+            z-index: -1;
+            filter: blur(12px);
+            opacity: 0.75;
+            transition: opacity 0.3s ease;
+        }
+        .photo-glow-frame:hover::before {
+            opacity: 1;
+            filter: blur(18px);
+        }
+
+        /* Interactive Hobby Card Shifting Classes */
+        .hobby-card-item {
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+            will-change: transform;
+        }
+        .hobby-card-active {
+            box-shadow: 0 10px 30px -5px rgba(6, 182, 212, 0.4) !important;
+            border-color: rgba(6, 182, 212, 0.8) !important;
+            z-index: 30 !important;
+        }
+
+        .shift-down-card1 {
+            transform: translateY(225px) !important;
+        }
+        .shift-down-card2 {
+            transform: translateY(225px) !important;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #030712;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e3a8a;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2563eb;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-blue-600 selection:text-white relative overflow-x-hidden">
+
+    <!-- Canvas Shooting Stars Background -->
+    <canvas id="starCanvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0 opacity-80"></canvas>
+
+    <!-- Floating Pill Header / Navigation Bar -->
+    <header class="fixed top-5 left-0 w-full z-50 px-4" data-aos="fade-down" data-aos-duration="1000">
+        <div class="max-w-6xl mx-auto flex items-center justify-between nav-pill rounded-full px-4 py-2.5 sm:px-6">
+            
+            <!-- Logo -->
+            <a href="#home" class="flex items-center gap-2.5 group">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-[#1d4ed8] via-[#2563eb] to-[#f59e0b] flex items-center justify-center text-white font-bold text-sm shadow-md group-hover:scale-105 transition-transform">
+                    A
+                </div>
+                <span class="font-extrabold text-base tracking-tight text-gradient-blue-yellow">
+                    Amelia<span class="text-[#f59e0b]">.</span>
+                </span>
+            </a>
+
+            <!-- Desktop Nav Items -->
+            <nav class="hidden md:flex items-center gap-6 text-xs sm:text-sm font-medium text-slate-300">
+                <a href="#about" class="hover:text-[#38bdf8] transition-colors">Tentang</a>
+                <a href="#education" class="hover:text-[#38bdf8] transition-colors">Pendidikan</a>
+                <a href="#experience" class="hover:text-[#38bdf8] transition-colors">Organisasi</a>
+                <a href="#achievements" class="hover:text-[#38bdf8] transition-colors">Prestasi & Karya</a>
+                <a href="#skills" class="hover:text-[#38bdf8] transition-colors">Keahlian</a>
+            </nav>
+
+            <!-- Action Button -->
+            <div class="hidden md:flex items-center">
+                <a href="#contact" class="btn-palette-glow px-5 py-2 rounded-full text-xs sm:text-sm font-semibold text-white flex items-center gap-2">
+                    <span>Hubungi Saya</span>
+                    <i class="fa-solid fa-paper-plane text-xs"></i>
+                </a>
+            </div>
+
+            <!-- Mobile Hamburger Btn -->
+            <button id="mobileMenuBtn" class="md:hidden p-1.5 text-slate-300 hover:text-white focus:outline-none">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobileMenu" class="hidden md:hidden nav-pill rounded-2xl border border-blue-500/40 mt-3 p-5 space-y-3 max-w-6xl mx-auto">
+            <a href="#about" class="mobile-link block text-sm font-medium text-slate-200 hover:text-[#38bdf8]">Tentang</a>
+            <a href="#education" class="mobile-link block text-sm font-medium text-slate-200 hover:text-[#38bdf8]">Pendidikan</a>
+            <a href="#experience" class="mobile-link block text-sm font-medium text-slate-200 hover:text-[#38bdf8]">Organisasi</a>
+            <a href="#achievements" class="mobile-link block text-sm font-medium text-slate-200 hover:text-[#38bdf8]">Prestasi & Karya</a>
+            <a href="#skills" class="mobile-link block text-sm font-medium text-slate-200 hover:text-[#38bdf8]">Keahlian</a>
+            <a href="#contact" class="mobile-link block text-sm font-semibold text-[#38bdf8]">Hubungi Saya</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="relative min-h-screen pt-36 pb-20 flex items-center z-10 px-4 sm:px-8">
+        
+        <!-- Ambient Glowing Background Orbs -->
+        <div class="absolute top-1/3 left-10 w-[450px] h-[350px] bg-blue-600/20 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute top-1/2 right-10 w-[350px] h-[350px] bg-amber-500/15 rounded-full blur-[110px] pointer-events-none"></div>
+
+        <div class="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <!-- Left Text Content -->
+            <div class="lg:col-span-7 text-left space-y-6" data-aos="fade-right" data-aos-duration="1000">
+                
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full badge-pill text-xs sm:text-sm text-[#38bdf8] font-medium">
+                    <span class="w-2 h-2 rounded-full bg-[#f59e0b] animate-pulse"></span>
+                    Informatics Student @ Universitas Negeri Surabaya
+                </div>
+
+                <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                    Halo, Saya <br class="hidden sm:inline" />
+                    <span class="text-gradient-blue-yellow">Amelia Nur Aisya</span>
+                </h1>
+
+                <div class="text-lg sm:text-2xl font-medium text-slate-300 flex items-center justify-start gap-1">
+                    <span id="typingText" class="text-[#38bdf8] font-semibold">Public Speaker & Creative Thinker</span>
+                    <span class="animate-pulse text-[#f59e0b] font-light">|</span>
+                </div>
+
+                <p class="text-slate-300 text-sm sm:text-base leading-relaxed max-w-xl">
+                    Mahasiswi Teknik Informatika UNESA yang berfokus pada teknologi, komunikasi, serta eksplorasi media interaktif kreatif dengan pola pikir kritis & manajemen prioritas yang efektif.
+                </p>
+
+                <div class="flex flex-wrap items-center justify-start gap-3 pt-2">
+                    <div class="badge-pill px-3.5 py-1.5 rounded-full text-xs font-medium text-slate-300 flex items-center gap-2">
+                        <i class="fa-solid fa-location-dot text-[#f59e0b]"></i>
+                        Bojonegoro, Jawa Timur
+                    </div>
+                    <div class="badge-pill px-3.5 py-1.5 rounded-full text-xs font-medium text-slate-300 flex items-center gap-2">
+                        <i class="fa-solid fa-graduation-cap text-[#38bdf8]"></i>
+                        S1 Teknik Informatika
+                    </div>
+                    <div class="badge-pill px-3.5 py-1.5 rounded-full text-xs font-medium text-slate-300 flex items-center gap-2 border border-purple-500/30">
+                        <i class="fa-solid fa-paint-brush text-[#c084fc]"></i>
+                        Desain & Media Interaktif
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap items-center justify-start gap-4 pt-4">
+                    <a href="#contact" class="btn-palette-glow px-8 py-3.5 rounded-full text-sm font-semibold text-white flex items-center gap-2.5">
+                        <span>Mulai Berdiskusi</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                    <a href="#achievements" class="px-8 py-3.5 rounded-full badge-pill text-sm font-semibold text-slate-200 hover:text-[#38bdf8] hover:border-[#38bdf8]/50 transition-all">
+                        Lihat Portofolio
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Right Column: FLOATING CARD FRAME WITH AUTOMATIC 3D FLIP CARD (3 PHOTOS ROTATION) -->
+            <div class="lg:col-span-5 flex justify-center lg:justify-end" data-aos="fade-left" data-aos-duration="1000">
+                <div class="relative w-full max-w-sm photo-glow-frame animate-float">
+                    
+                    <div class="glass-card p-4 rounded-3xl overflow-hidden border border-blue-500/30 relative">
+                        
+                        <!-- Card Header Status -->
+                        <div class="flex items-center justify-between pb-3 px-1 text-xs text-slate-400 border-b border-blue-900/40 mb-3">
+                            <span class="flex items-center gap-1.5 font-medium text-[#38bdf8]">
+                                <i class="fa-solid fa-rotate animate-spin text-[#f59e0b]"></i>
+                                <span id="cardLabelText">Foto 1: Pasfoto Formal CV</span>
+                            </span>
+                            <span class="text-[10px] bg-blue-600/30 text-slate-200 font-semibold px-2 py-0.5 rounded-full border border-blue-400/40">
+                                
+                            </span>
+                        </div>
+
+                        <!-- 3D Flip Card Container -->
+                        <div class="flip-card-container aspect-[4/5] w-full relative">
+                            <div id="flipCardInner" class="flip-card-inner">
+                                
+                                <!-- FOTO DEPAN (FRONT CARD) -->
+                                <div class="flip-card-front border border-blue-500/30 bg-slate-900 shadow-2xl">
+                                    <img id="frontImage" 
+                                         src="foto formal.jpeg.jpeg" 
+                                         alt="Foto Formal CV Amelia Nur Aisya" 
+                                         class="w-full h-full object-cover">
+                                    
+                                    <div class="absolute inset-0 bg-gradient-to-t from-[#030712] via-slate-950/20 to-transparent"></div>
+                                    <div class="absolute bottom-4 left-4 right-4 text-left">
+                                        <span id="frontBadge" class="px-2.5 py-1 rounded-full bg-blue-600/80 backdrop-blur-md text-[10px] font-bold text-white uppercase tracking-wider">
+                                            Academic Profile
+                                        </span>
+                                        <p id="frontTitle" class="text-white font-extrabold text-lg mt-1">Amelia Nur Aisya</p>
+                                        <p id="frontSub" class="text-slate-300 text-xs">S1 Teknik Informatika UNESA</p>
+                                    </div>
+                                </div>
+
+                                <!-- FOTO BELAKANG (BACK CARD) -->
+                                <div class="flip-card-back border border-purple-500/30 bg-slate-900 shadow-2xl">
+                                    <img id="backImage" 
+                                         src="foto oska.jpeg" 
+                                         alt="Public Speaking and Presentation" 
+                                         class="w-full h-full object-cover">
+                                    
+                                    <div class="absolute inset-0 bg-gradient-to-t from-[#030712] via-slate-950/20 to-transparent"></div>
+                                    <div class="absolute bottom-4 left-4 right-4 text-left">
+                                        <span id="backBadge" class="px-2.5 py-1 rounded-full bg-amber-500/80 backdrop-blur-md text-[10px] font-bold text-white uppercase tracking-wider">
+                                            Public Speaking
+                                        </span>
+                                        <p id="backTitle" class="text-white font-extrabold text-lg mt-1">Kepemimpinan & Komunikasi</p>
+                                        <p id="backSub" class="text-slate-300 text-xs">Pengurus Organisasi & Presenter</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Dots Indicator (3 Dots) -->
+                        <div class="flex items-center justify-center gap-2.5 pt-4 border-t border-blue-900/40 mt-3">
+                            <span id="dot0" class="w-3 h-3 rounded-full bg-[#f59e0b] scale-125 transition-all duration-300"></span>
+                            <span id="dot1" class="w-2.5 h-2.5 rounded-full bg-slate-600 transition-all duration-300"></span>
+                            <span id="dot2" class="w-2.5 h-2.5 rounded-full bg-slate-600 transition-all duration-300"></span>
+                        </div>
+
+                    </div>
+
+                    <!-- Floating Badge Top Right -->
+                    <div class="absolute -top-4 -right-4 badge-pill px-4 py-2.5 rounded-2xl flex items-center gap-3 border border-amber-500/40 shadow-xl animate-float-delayed">
+                        <div class="w-8 h-8 rounded-full bg-amber-500/20 flex items-center justify-center text-[#f59e0b] font-bold text-sm">
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <div class="text-left">
+                            <p class="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Prestasi</p>
+                            <p class="text-xs font-extrabold text-white">Juara 1 Poster & Pararel 3 IPA </p>
+                        </div>
+                    </div>
+
+                    <!-- Floating Badge Bottom Left -->
+                    <div class="absolute -bottom-4 -left-4 badge-pill px-4 py-2.5 rounded-2xl flex items-center gap-3 border border-blue-500/40 shadow-xl">
+                        <div class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-[#38bdf8] font-bold text-sm">
+                            <i class="fa-solid fa-microphone"></i>
+                        </div>
+                        <div class="text-left">
+                            <p class="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Keahlian</p>
+                            <p class="text-xs font-extrabold text-white">Public Speaking & Leadership</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <a href="#about" class="absolute bottom-6 left-1/2 -translate-x-1/2 text-slate-400 hover:text-[#38bdf8] transition-colors animate-bounce">
+                <i class="fa-solid fa-chevron-down text-xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-24 relative z-10 border-t border-blue-900/40">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up" data-aos-duration="800">
+                <h2 class="text-xs uppercase tracking-widest text-[#38bdf8] font-bold mb-2">Profil Singkat</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-white">Tentang Saya</p>
+                <div class="w-16 h-1 bg-gradient-to-r from-blue-700 via-blue-500 to-amber-400 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <div class="lg:col-span-7 glass-card p-8 rounded-3xl space-y-5 border border-blue-500/30" data-aos="fade-right" data-aos-duration="900">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-blue-600/20 border border-blue-400/40 flex items-center justify-center text-[#38bdf8] text-lg">
+                            <i class="fa-solid fa-user-astronaut"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white tracking-tight">Latar Belakang</h3>
+                    </div>
+
+                    <div class="text-slate-300 leading-relaxed text-sm sm:text-base space-y-4 pt-1">
+                        <p>
+                            Saya adalah mahasiswi <strong class="text-[#38bdf8] font-semibold">S1 Teknik Informatika UNESA</strong> yang berdedikasi mengeksplorasi inovasi teknologi, komunikasi, serta perancangan media interaktif kreatif. Berbekal kemampuan <strong class="text-[#f59e0b] font-semibold">public speaking</strong> dan pola pikir analitis yang kritis, saya terbiasa memimpin diskusi, berkolaborasi dalam tim, serta mengelola skala prioritas secara disiplin dan responsif.
+                        </p>
+                        <p>
+                            Di luar ranah akademis, minat saya pada <strong class="text-[#c084fc] font-semibold">seni ilustrasi digital dan eksplorasi musik</strong> menjadi pendorong utama dalam melatih kepekaan estetika visual. Saya berkomitmen menggabungkan keahlian teknis dan sentuhan kreativitas untuk menghasilkan solusi digital yang tidak hanya fungsional, tetapi juga memberikan dampak positif dan bernilai guna tinggi.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 flex flex-col gap-3 relative min-h-[420px]" data-aos="fade-left" data-aos-duration="900">
+                    
+                    <div id="artCard" class="glass-card hobby-card-item p-5 rounded-2xl border border-cyan-500/30 flex flex-col gap-3 cursor-pointer relative z-10 overflow-hidden">
+                        <div class="flex items-center gap-4">
+                            <div class="w-11 h-11 rounded-xl bg-cyan-600/20 border border-cyan-400/40 flex items-center justify-center text-[#38bdf8] text-lg shrink-0">
+                                <i class="fa-solid fa-palette"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between">
+                                    <h4 class="text-base font-bold text-white">Seni & Ilustrasi</h4>
+                                    <span class="text-[10px] bg-cyan-500/20 text-[#38bdf8] px-2 py-0.5 rounded-full border border-cyan-400/30 font-semibold opacity-90">
+                                        Hover me <i class="fa-solid fa-eye ml-1"></i>
+                                    </span>
+                                </div>
+                                <p class="text-xs text-slate-400 mt-0.5 leading-relaxed">Menggambar digital & visualisasi poster.</p>
+                            </div>
+                        </div>
+
+                        <div id="artMediaPreview" class="max-h-0 opacity-0 overflow-hidden transition-all duration-400 ease-out space-y-3">
+                            <div class="pt-3 border-t border-cyan-500/30 space-y-2.5">
+                                <div class="relative rounded-xl overflow-hidden border border-cyan-400/40 h-32 w-full shadow-2xl">
+                                    <img src="foto gambar.jpeg" 
+                                         alt="Digital Illustration Preview" 
+                                         class="w-full h-full object-cover">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-[#030712] via-transparent to-transparent opacity-90"></div>
+                                    <div class="absolute bottom-2 left-3 right-3 flex items-center justify-between">
+                                        <span class="px-2 py-0.5 rounded-full bg-cyan-600/80 text-[10px] font-bold text-white uppercase tracking-wider backdrop-blur-sm">
+                                            1st Place Poster Award
+                                        </span>
+                                        <span class="text-[10px] text-amber-400 font-bold flex items-center gap-1">
+                                            <i class="fa-solid fa-sparkles"></i> Digital Art
+                                        </span>
+                                    </div>
+                                </div>
+                                <p class="text-xs text-slate-200 leading-snug bg-blue-950/60 p-2.5 rounded-xl border border-cyan-500/20">
+                                    <strong class="text-[#38bdf8]">Ekspresi Kreatif:</strong> Penyaluran ide visual melalui desain grafik, sketsa ilustrasi digital, dan harmoni warna.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="psCard" class="glass-card hobby-card-item p-5 rounded-2xl border border-amber-500/30 flex flex-col gap-3 cursor-pointer relative z-10 overflow-hidden">
+                        <div class="flex items-center gap-4">
+                            <div class="w-11 h-11 rounded-xl bg-amber-500/20 border border-amber-400/30 flex items-center justify-center text-[#f59e0b] text-lg shrink-0">
+                                <i class="fa-solid fa-comments"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between">
+                                    <h4 class="text-base font-bold text-white">Public Speaking</h4>
+                                    <span class="text-[10px] bg-amber-500/20 text-[#f59e0b] px-2 py-0.5 rounded-full border border-amber-400/30 font-semibold opacity-90">
+                                        Hover me <i class="fa-solid fa-eye ml-1"></i>
+                                    </span>
+                                </div>
+                                <p class="text-xs text-slate-400 mt-0.5 leading-relaxed">Komunikasi percaya diri & presentasi ide.</p>
+                            </div>
+                        </div>
+
+                        <div id="psMediaPreview" class="max-h-0 opacity-0 overflow-hidden transition-all duration-400 ease-out space-y-3">
+                            <div class="pt-3 border-t border-amber-500/30 space-y-2.5">
+                                <div class="relative rounded-xl overflow-hidden border border-amber-400/40 h-32 w-full shadow-2xl">
+                                    <img src="foto pubspeak.jpeg" 
+                                         alt="Public Speaking Preview" 
+                                         class="w-full h-full object-cover">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-[#030712] via-transparent to-transparent opacity-90"></div>
+                                    <div class="absolute bottom-2 left-3 right-3 flex items-center justify-between">
+                                        <span class="px-2 py-0.5 rounded-full bg-amber-500/80 text-[10px] font-bold text-slate-950 uppercase tracking-wider backdrop-blur-sm">
+                                            Leadership & Presentation
+                                        </span>
+                                        <span class="text-[10px] text-[#38bdf8] font-bold flex items-center gap-1">
+                                            <i class="fa-solid fa-microphone"></i> Speaker
+                                        </span>
+                                    </div>
+                                </div>
+                                <p class="text-xs text-slate-200 leading-snug bg-blue-950/60 p-2.5 rounded-xl border border-amber-500/20">
+                                    <strong class="text-[#f59e0b]">Kepemimpinan & Komunikasi:</strong> Menyampaikan gagasan dengan efektif dan memimpin diskusi tim secara produktif.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="musicCard" class="glass-card hobby-card-item p-5 rounded-2xl border border-purple-500/30 flex flex-col gap-3 cursor-pointer relative z-10 overflow-hidden">
+                        <div class="flex items-center gap-4">
+                            <div class="w-11 h-11 rounded-xl bg-purple-600/20 border border-purple-400/30 flex items-center justify-center text-[#c084fc] text-lg shrink-0">
+                                <i class="fa-solid fa-music"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between">
+                                    <h4 class="text-base font-bold text-white">Eksplorasi Musik</h4>
+                                    <span class="text-[10px] bg-purple-500/20 text-[#c084fc] px-2 py-0.5 rounded-full border border-purple-400/30 font-semibold opacity-90">
+                                        Hover me <i class="fa-solid fa-eye ml-1"></i>
+                                    </span>
+                                </div>
+                                <p class="text-xs text-slate-400 mt-0.5 leading-relaxed">Ritme inspiratif untuk pemikiran analitis.</p>
+                            </div>
+                        </div>
+
+                        <div id="musicMediaPreview" class="max-h-0 opacity-0 overflow-hidden transition-all duration-400 ease-out space-y-3">
+                            <div class="pt-3 border-t border-purple-500/30 space-y-2.5">
+                                <!-- KODE BARU DENGAN VIDEO -->
+                        <!-- KODE BARU: DENGAN TOMBOL PLAY, ADA SUARA, DAN BISA DIPUTAR BERKALI-KALI -->
+                        <div class="relative rounded-xl overflow-hidden border border-purple-400/40 h-32 w-full shadow-2xl bg-slate-950">
+                            <video src="nyanyi2.mp4" 
+                                class="w-full h-full object-cover" 
+                                controls
+                                preload="metadata">
+                                Browser Anda tidak mendukung tag video.
+                            </video>
+                        </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#030712] via-transparent to-transparent opacity-90 pointer-events-none"></div>
+                            <div class="absolute bottom-2 left-3 right-3 flex items-center justify-between z-10">
+                                <span class="px-2 py-0.5 rounded-full bg-purple-600/80 text-[10px] font-bold text-white uppercase tracking-wider backdrop-blur-sm">
+                                    Rhythm & Inspiration
+                                </span>
+                                <span class="text-[10px] text-purple-300 font-bold flex items-center gap-1">
+                                    <i class="fa-solid fa-headphones"></i> Focus Mode
+                                </span>
+                            </div>
+                        </div>
+                                <p class="text-xs text-slate-200 leading-snug bg-blue-950/60 p-2.5 rounded-xl border border-purple-500/20">
+                                    <strong class="text-[#c084fc]">Kreativitas & Fokus:</strong> Menjaga konsentrasi tinggi serta merangsang pemikiran kreatif dalam memecahkan tantangan logis.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION SECTION -->
+    <section id="education" class="py-24 relative z-10 bg-slate-950/50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up" data-aos-duration="800">
+                <h2 class="text-xs uppercase tracking-widest text-[#38bdf8] font-bold mb-2">Jejak Akademis</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-white">Pendidikan</p>
+                <div class="w-16 h-1 bg-gradient-to-r from-blue-700 via-blue-500 to-amber-400 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Ed 1: UNESA -->
+                <div class="hover-flip-container h-[320px] w-full" data-aos="fade-right" data-aos-duration="900">
+                    <div class="hover-flip-inner">
+                        
+                        <div class="hover-flip-front glass-card p-8 rounded-2xl border-l-4 border-l-[#f59e0b] space-y-3 flex flex-col justify-between shadow-xl">
+                            <div>
+                                <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-blue-600/20 text-[#38bdf8] border border-blue-500/30">
+                                    Agustus 2026 - Agustus 2030 (Expected)
+                                </span>
+                                <h3 class="text-2xl font-bold text-white mt-3">Universitas Negeri Surabaya</h3>
+                                <p class="text-[#38bdf8] font-medium text-sm">S1 Teknik Informatika (Bachelor of Computer Science)</p>
+                                <p class="text-slate-400 text-xs mt-1">Surabaya, Jawa Timur, Indonesia</p>
+                            </div>
+                            <div class="pt-2 border-t border-blue-900/40 flex items-center justify-between text-xs text-amber-400">
+                                <span class="flex items-center gap-1.5 font-medium"><i class="fa-solid fa-hand-pointer"></i> Arahkan kursor untuk melihat detail foto</span>
+                                <i class="fa-solid fa-rotate text-slate-400"></i>
+                            </div>
+                        </div>
+
+                        <div class="hover-flip-back glass-card p-6 rounded-2xl border border-amber-500/40 bg-slate-900/95 flex flex-col justify-center items-center text-center gap-4 shadow-2xl relative overflow-hidden">
+                            <div class="absolute inset-0 z-0 opacity-50">
+                                <img src="foto ti2026.jpeg" alt="UNESA" class="w-full h-full object-cover">
+                            </div>
+                            <div class="relative z-10 w-20 h-20 rounded-full border-2 border-amber-500 overflow-hidden shadow-lg">
+                                <img src="foto ti2026.jpeg" alt="UNESA Logo" class="w-full h-full object-cover">
+                            </div>
+                            <div class="relative z-10 space-y-1">
+                                <h4 class="text-lg font-bold text-white">Fokus Studi: S1 Teknik Informatika</h4>
+                                <p class="text-xs text-slate-300 leading-relaxed px-2">
+                                    Mempelajari algoritma pemrograman, rekayasa perangkat lunak, arsitektur sistem komputer, dan pengembangan media pembelajaran interaktif berbasis IT.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Ed 2: SMAN 2 -->
+                <div class="hover-flip-container h-[320px] w-full" data-aos="fade-left" data-aos-duration="900">
+                    <div class="hover-flip-inner">
+                        
+                        <div class="hover-flip-front glass-card p-8 rounded-2xl border-l-4 border-l-blue-600 space-y-3 flex flex-col justify-between shadow-xl">
+                            <div>
+                                <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-blue-900/40 text-[#38bdf8] border border-blue-700/60">
+                                    Juli 2023 - Mei 2026
+                                </span>
+                                <h3 class="text-xl font-bold text-white mt-3">SMAN 2 Taruna Pamong Praja Jatim</h3>
+                                <p class="text-[#38bdf8] font-medium text-sm">Jurusan MIPA (Science Major)</p>
+                                <p class="text-slate-400 text-xs mt-1">Bojonegoro, Jawa Timur, Indonesia</p>
+                            </div>
+                            <div class="pt-2 border-t border-blue-900/40 flex items-center justify-between text-xs text-[#38bdf8]">
+                                <span class="flex items-center gap-1.5 font-medium"><i class="fa-solid fa-hand-pointer"></i> Arahkan kursor untuk melihat detail foto</span>
+                                <i class="fa-solid fa-rotate text-slate-400"></i>
+                            </div>
+                        </div>
+
+                        <div class="hover-flip-back glass-card p-6 rounded-2xl border border-blue-500/40 bg-slate-900/95 flex flex-col justify-center items-center text-center gap-4 shadow-2xl relative overflow-hidden">
+                            <div class="absolute inset-0 z-0 opacity-50">
+                                <img src="foto sma.jpg" alt="SMAN 2" class="w-full h-full object-cover">
+                            </div>
+                            <div class="relative z-10 w-20 h-20 rounded-full border-2 border-blue-400 overflow-hidden shadow-lg">
+                                <img src="foto sma.jpg" alt="SMAN 2 Logo" class="w-full h-full object-cover">
+                            </div>
+                            <div class="relative z-10 space-y-1">
+                                <h4 class="text-lg font-bold text-white">Prestasi Kelulusan SMAN 2</h4>
+                                <p class="text-xs text-slate-300 leading-relaxed px-2">
+                                    Lulus dengan Rata-Rata Nilai <strong class="text-amber-400">91.98</strong>, meraih Peringkat 3 Umum Jurusan IPA serta Academic Excellence Award.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ORGANIZATIONAL EXPERIENCE SECTION -->
+    <section id="experience" class="py-24 relative z-10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up" data-aos-duration="800">
+                <h2 class="text-xs uppercase tracking-widest text-[#38bdf8] font-bold mb-2">Kepemimpinan</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-white">Pengalaman Organisasi</p>
+                <div class="w-16 h-1 bg-gradient-to-r from-blue-700 via-blue-500 to-amber-400 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Org 1 -->
+                <div class="hover-flip-container h-[320px] w-full" data-aos="fade-right" data-aos-duration="900">
+                    <div class="hover-flip-inner">
+                        
+                        <div class="hover-flip-front glass-card p-8 rounded-2xl space-y-4 flex flex-col justify-between shadow-xl">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <span class="text-xs font-bold text-[#38bdf8] uppercase tracking-wider">Sep 2023 - Sep 2024</span>
+                                    <h3 class="text-lg font-bold text-white mt-1">Anggota Divisi Keterampilan & Kewirausahaan</h3>
+                                    <p class="text-slate-400 text-xs mt-0.5">OSKADABO - OSIS MPK SMAN 2 BOJONEGORO</p>
+                                </div>
+                                <div class="w-10 h-10 rounded-lg bg-blue-600/20 flex items-center justify-center text-[#f59e0b] shrink-0">
+                                    <i class="fa-solid fa-lightbulb"></i>
+                                </div>
+                            </div>
+                            <p class="text-slate-300 text-xs leading-relaxed">
+                                Berkontribusi aktif dalam program kerja pengembangan keterampilan, kreativitas, dan wirausaha siswa di lingkungan sekolah.
+                            </p>
+                            <div class="pt-2 border-t border-blue-900/40 flex items-center justify-between text-xs text-[#f59e0b]">
+                                <span class="flex items-center gap-1.5 font-medium"><i class="fa-solid fa-hand-pointer"></i> Arahkan kursor untuk melihat detail foto</span>
+                                <i class="fa-solid fa-rotate text-slate-400"></i>
+                            </div>
+                        </div>
+
+                        <div class="hover-flip-back glass-card p-6 rounded-2xl border border-blue-500/40 bg-slate-900/95 flex flex-col justify-center items-center text-center gap-4 shadow-2xl relative overflow-hidden">
+                            <div class="absolute inset-0 z-0 opacity-50">
+                                <img src="foto-osis.jpg" alt="OSIS" class="w-full h-full object-cover">
+                            </div>
+                            <div class="relative z-10 w-20 h-20 rounded-full border-2 border-blue-400 overflow-hidden shadow-lg">
+                                <img src="foto-osis.jpg" alt="OSIS Logo" class="w-full h-full object-cover">
+                            </div>
+                            <div class="relative z-10 space-y-1">
+                                <h4 class="text-lg font-bold text-white">OSKADABO SMAN 2 Bojonegoro</h4>
+                                <p class="text-xs text-slate-300 leading-relaxed px-2">
+                                    Mengembangkan kemampuan koordinasi tim, manajemen event sekolah, serta kepemimpinan kreatif di bidang kewirausahaan siswa.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Org 2 -->
+                <div class="hover-flip-container h-[320px] w-full" data-aos="fade-left" data-aos-duration="900">
+                    <div class="hover-flip-inner">
+                        
+                        <div class="hover-flip-front glass-card p-8 rounded-2xl space-y-4 flex flex-col justify-between shadow-xl">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <span class="text-xs font-bold text-[#38bdf8] uppercase tracking-wider">Okt 2021 - Okt 2022</span>
+                                    <h3 class="text-lg font-bold text-white mt-1">Sekretaris</h3>
+                                    <p class="text-slate-400 text-xs mt-0.5">OSIS SMPN 3 BOJONEGORO</p>
+                                </div>
+                                <div class="w-10 h-10 rounded-lg bg-blue-600/20 flex items-center justify-center text-[#38bdf8] shrink-0">
+                                    <i class="fa-solid fa-file-signature"></i>
+                                </div>
+                            </div>
+                            <p class="text-slate-300 text-xs leading-relaxed">
+                                Bertanggung jawab memelihara dokumen arsip, menyusun notulensi rapat, dan mengelola administrasi organisasi secara rapi.
+                            </p>
+                            <div class="pt-2 border-t border-blue-900/40 flex items-center justify-between text-xs text-[#38bdf8]">
+                                <span class="flex items-center gap-1.5 font-medium"><i class="fa-solid fa-hand-pointer"></i> Arahkan kursor untuk melihat detail foto</span>
+                                <i class="fa-solid fa-rotate text-slate-400"></i>
+                            </div>
+                        </div>
+
+                        <div class="hover-flip-back glass-card p-6 rounded-2xl border border-purple-500/40 bg-slate-900/95 flex flex-col justify-center items-center text-center gap-4 shadow-2xl relative overflow-hidden">
+                            <div class="absolute inset-0 z-0 opacity-50">
+                                <img src="foto-osis-smp.jpg" alt="Secretariat" class="w-full h-full object-cover">
+                            </div>
+                            <div class="relative z-10 w-20 h-20 rounded-full border-2 border-purple-400 overflow-hidden shadow-lg">
+                                <img src="foto-osis-smp.jpg" alt="SMPN 3 Logo" class="w-full h-full object-cover">
+                            </div>
+                            <div class="relative z-10 space-y-1">
+                                <h4 class="text-lg font-bold text-white">Administrasi & Kesekretariatan</h4>
+                                <p class="text-xs text-slate-300 leading-relaxed px-2">
+                                    Melatih kedisiplinan ketatausahaan, penyusunan proposal kegiatan, serta kelancaran komunikasi internal pengurus OSIS.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ACHIEVEMENTS & PROJECTS SECTION -->
+    <section id="achievements" class="py-24 relative z-10 bg-slate-950/50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up" data-aos-duration="800">
+                <h2 class="text-xs uppercase tracking-widest text-[#38bdf8] font-bold mb-2">Pencapaian</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-white">Prestasi & Proyek</p>
+                <div class="w-16 h-1 bg-gradient-to-r from-blue-700 via-blue-500 to-amber-400 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Featured Project Card -->
+            <div class="glass-card p-8 rounded-3xl mb-12 border border-blue-500/40 relative overflow-hidden" data-aos="fade-up" data-aos-duration="900">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-8 space-y-4">
+                        <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-500/20 text-[#f59e0b] border border-amber-500/30 inline-block">Proyek Unggulan (2026)</span>
+                        <h3 class="text-2xl sm:text-3xl font-bold text-white">Project Leader - IT Based Interactive Learning Media Development</h3>
+                        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                            Memimpin perancangan dan pengembangan media pembelajaran interaktif berbasis teknologi informasi guna menciptakan pengalaman belajar visual yang menarik dan responsif.
+                        </p>
+                        
+                        <div class="pt-2">
+                            <a href="https://techone-smada.github.io/UPRAK-MTL_KLS_12-1_TA_2025-2026/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-bold text-[#38bdf8] hover:text-[#f59e0b] transition-colors bg-blue-950/60 px-4 py-2 rounded-xl border border-blue-500/30">
+                                <i class="fa-solid fa-external-link-alt text-xs"></i>
+                                <span>Kunjungi Website Terkait: Turunan</span>
+                            </a>
+                        </div>
+
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="px-3 py-1 rounded-md text-xs font-medium bg-blue-900/60 text-[#38bdf8] border border-blue-500/30">UI/UX Design</span>
+                            <span class="px-3 py-1 rounded-md text-xs font-medium bg-blue-900/60 text-[#38bdf8] border border-blue-500/30">Interactive Media</span>
+                            <span class="px-3 py-1 rounded-md text-xs font-medium bg-blue-900/60 text-[#38bdf8] border border-blue-500/30">Project Leadership</span>
+                        </div>
+                    </div>
+                    
+                    <div class="lg:col-span-4 flex justify-center">
+                        <div class="w-full h-48 rounded-2xl overflow-hidden border border-blue-500/40 shadow-2xl relative group">
+                            <img src="foto-proyek1.jpg" 
+                                 alt="Project Media Pembelajaran IT" 
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#030712] via-transparent to-transparent opacity-80"></div>
+                            <div class="absolute bottom-3 left-3 right-3 text-left">
+                                <span class="px-2 py-0.5 rounded-full bg-blue-600/80 text-[10px] font-bold text-white uppercase tracking-wider backdrop-blur-sm">
+                                    Featured Project
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Achievements Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Ach 1 -->
+                <div class="glass-card p-6 rounded-2xl space-y-3" data-aos="fade-up" data-aos-duration="600">
+                    <div class="w-10 h-10 rounded-lg bg-amber-500/20 text-[#f59e0b] flex items-center justify-center">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+                    <span class="text-xs font-bold text-[#f59e0b]">2022</span>
+                    <h4 class="text-lg font-bold text-white">Juara 1 Lomba Desain Poster Digital</h4>
+                    <p class="text-slate-400 text-xs">Kompetisi Desain Poster Digital Tingkat Sekolah.</p>
+                </div>
+
+                <!-- Ach 2 -->
+                <div class="glass-card p-6 rounded-2xl space-y-3" data-aos="fade-up" data-aos-duration="700">
+                    <div class="w-10 h-10 rounded-lg bg-blue-600/20 text-[#38bdf8] flex items-center justify-center">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                    <span class="text-xs font-bold text-[#38bdf8]">2023</span>
+                    <h4 class="text-lg font-bold text-white">Peringkat 1 Umum Angkatan</h4>
+                    <p class="text-slate-400 text-xs">Peringkat 1 Paralel Umum pada Kelas Kelulusan.</p>
+                </div>
+
+                <!-- Ach 3 -->
+                <div class="glass-card p-6 rounded-2xl space-y-3" data-aos="fade-up" data-aos-duration="800">
+                    <div class="w-10 h-10 rounded-lg bg-blue-600/20 text-[#38bdf8] flex items-center justify-center">
+                        <i class="fa-solid fa-ranking-star"></i>
+                    </div>
+                    <span class="text-xs font-bold text-[#38bdf8]">2026</span>
+                    <h4 class="text-lg font-bold text-white">Peringkat 9 SNBP Eligibility</h4>
+                    <p class="text-slate-400 text-xs">Peringkat ke-9 Kuota Kelayakan SNBP Perguruan Tinggi.</p>
+                </div>
+
+                <!-- Ach 4 -->
+                <div class="glass-card p-6 rounded-2xl space-y-3" data-aos="fade-up" data-aos-duration="900">
+                    <div class="w-10 h-10 rounded-lg bg-amber-500/20 text-[#f59e0b] flex items-center justify-center">
+                        <i class="fa-solid fa-medal"></i>
+                    </div>
+                    <span class="text-xs font-bold text-[#f59e0b]">2026</span>
+                    <h4 class="text-lg font-bold text-white">Peringkat 3 Jurusan MIPA</h4>
+                    <p class="text-slate-400 text-xs">Peringkat ke-3 Paralel Keseluruhan Jurusan MIPA.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="py-24 relative z-10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up" data-aos-duration="800">
+                <h2 class="text-xs uppercase tracking-widest text-[#38bdf8] font-bold mb-2">Kompetensi</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-white">Keahlian & Alat</p>
+                <div class="w-16 h-1 bg-gradient-to-r from-blue-700 via-blue-500 to-amber-400 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Hard Skills -->
+                <div class="glass-card p-8 rounded-2xl space-y-6" data-aos="fade-right" data-aos-duration="900">
+                    <h3 class="text-xl font-bold text-white flex items-center gap-3">
+                        <i class="fa-solid fa-code text-[#38bdf8]"></i> Hard Skills & Tools
+                    </h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-4 rounded-xl bg-blue-900/30 border border-blue-500/30 flex items-center gap-3">
+                            <i class="fa-solid fa-terminal text-2xl text-[#38bdf8]"></i>
+                            <div>
+                                <p class="text-sm font-bold text-white">Dev C++</p>
+                                <p class="text-xs text-slate-400">C++ Coding</p>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-blue-900/30 border border-blue-500/30 flex items-center gap-3">
+                            <i class="fa-solid fa-code text-2xl text-[#38bdf8]"></i>
+                            <div>
+                                <p class="text-sm font-bold text-white">VS Code</p>
+                                <p class="text-xs text-slate-400">Code Editor</p>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-blue-900/30 border border-blue-500/30 flex items-center gap-3">
+                            <i class="fa-solid fa-palette text-2xl text-[#f59e0b]"></i>
+                            <div>
+                                <p class="text-sm font-bold text-white">Canva</p>
+                                <p class="text-xs text-slate-400">Visual Design</p>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-blue-900/30 border border-blue-500/30 flex items-center gap-3">
+                            <i class="fa-solid fa-file-lines text-2xl text-[#38bdf8]"></i>
+                            <div>
+                                <p class="text-sm font-bold text-white">MS Office</p>
+                                <p class="text-xs text-slate-400">Word/Excel/PPT</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Soft Skills -->
+                <div class="glass-card p-8 rounded-2xl space-y-6" data-aos="fade-left" data-aos-duration="900">
+                    <h3 class="text-xl font-bold text-white flex items-center gap-3">
+                        <i class="fa-solid fa-brain text-[#f59e0b]"></i> Soft Skills
+                    </h3>
+                    <div class="flex flex-wrap gap-2.5">
+                        <span class="px-4 py-2 rounded-xl badge-pill text-xs font-semibold text-slate-200 flex items-center gap-2">
+                            <i class="fa-solid fa-bullhorn text-[#f59e0b]"></i> Public Speaking
+                        </span>
+                        <span class="px-4 py-2 rounded-xl badge-pill text-xs font-semibold text-slate-200 flex items-center gap-2">
+                            <i class="fa-solid fa-comments text-[#38bdf8]"></i> Communication Skills
+                        </span>
+                        <span class="px-4 py-2 rounded-xl badge-pill text-xs font-semibold text-slate-200 flex items-center gap-2">
+                            <i class="fa-solid fa-users text-[#38bdf8]"></i> Leadership
+                        </span>
+                        <span class="px-4 py-2 rounded-xl badge-pill text-xs font-semibold text-slate-200 flex items-center gap-2">
+                            <i class="fa-solid fa-puzzle-piece text-[#38bdf8]"></i> Problem-Solving
+                        </span>
+                        <span class="px-4 py-2 rounded-xl badge-pill text-xs font-semibold text-slate-200 flex items-center gap-2">
+                            <i class="fa-solid fa-clock text-[#38bdf8]"></i> Time Management
+                        </span>
+                        <span class="px-4 py-2 rounded-xl badge-pill text-xs font-semibold text-slate-200 flex items-center gap-2">
+                            <i class="fa-solid fa-list-check text-[#38bdf8]"></i> Priority Management
+                        </span>
+                        <span class="px-4 py-2 rounded-xl badge-pill text-xs font-semibold text-slate-200 flex items-center gap-2">
+                            <i class="fa-solid fa-handshake text-[#38bdf8]"></i> Teamwork & Collaboration
+                        </span>
+                        <span class="px-4 py-2 rounded-xl badge-pill text-xs font-semibold text-slate-200 flex items-center gap-2">
+                            <i class="fa-solid fa-wand-magic-sparkles text-[#f59e0b]"></i> Creativity
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-24 relative z-10 bg-slate-950/50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center" data-aos="fade-up" data-aos-duration="900">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-xs uppercase tracking-widest text-[#38bdf8] font-bold mb-2">Terhubung</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-white">Hubungi Saya</p>
+                <div class="w-16 h-1 bg-gradient-to-r from-blue-700 via-blue-500 to-amber-400 mx-auto mt-4 rounded-full"></div>
+                <p class="text-slate-300 text-sm sm:text-base mt-6 max-w-xl mx-auto leading-relaxed">
+                    Terbuka untuk peluang kolaborasi proyek teknologi, pengembangan media interaktif, maupun diskusi profesional. Silakan terhubung melalui platform berikut:
+                </p>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6 max-w-4xl mx-auto pt-4">
+                
+                <a href="https://www.linkedin.com/in/ameliaaisya" target="_blank" rel="noopener noreferrer" class="glass-card p-6 rounded-2xl flex flex-col items-center justify-center gap-3 w-full sm:w-64 border border-blue-500/30 hover:border-[#38bdf8] hover:scale-105 transition-all group">
+                    <div class="w-14 h-14 rounded-2xl bg-blue-600/20 border border-blue-400/30 flex items-center justify-center text-[#38bdf8] text-2xl group-hover:bg-blue-600 group-hover:text-white transition-all shadow-lg">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-xs text-slate-400 uppercase font-semibold tracking-wider">LinkedIn</p>
+                        <p class="text-sm font-bold text-white mt-1 group-hover:text-[#38bdf8] transition-colors">ameliaaisya</p>
+                    </div>
+                </a>
+
+                <a href="https://www.instagram.com/mellnra_?rpxt=MWl1NjNoYXoyemFxOQ==" target="_blank" rel="noopener noreferrer" class="glass-card p-6 rounded-2xl flex flex-col items-center justify-center gap-3 w-full sm:w-64 border border-purple-500/30 hover:border-[#c084fc] hover:scale-105 transition-all group">
+                    <div class="w-14 h-14 rounded-2xl bg-purple-600/20 border border-purple-400/30 flex items-center justify-center text-[#c084fc] text-2xl group-hover:bg-gradient-to-tr group-hover:from-amber-500 group-hover:via-purple-600 group-hover:to-pink-500 group-hover:text-white transition-all shadow-lg">
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-xs text-slate-400 uppercase font-semibold tracking-wider">Instagram</p>
+                        <p class="text-sm font-bold text-white mt-1 group-hover:text-[#c084fc] transition-colors">@mellnra_</p>
+                    </div>
+                </a>
+
+                <a href="mailto:amel96542@gmail.com" class="glass-card p-6 rounded-2xl flex flex-col items-center justify-center gap-3 w-full sm:w-64 border border-amber-500/30 hover:border-[#f59e0b] hover:scale-105 transition-all group">
+                    <div class="w-14 h-14 rounded-2xl bg-amber-500/20 border border-amber-400/30 flex items-center justify-center text-[#f59e0b] text-2xl group-hover:bg-amber-500 group-hover:text-slate-950 transition-all shadow-lg">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-xs text-slate-400 uppercase font-semibold tracking-wider">Email Akademik</p>
+                        <p class="text-xs font-bold text-white mt-1 truncate max-w-[200px] group-hover:text-[#f59e0b] transition-colors">amel96542@gmail.com</p>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-8 border-t border-blue-900/40 text-center relative z-10">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+            <p>&copy; 2026 Amelia Nur Aisya. All rights reserved.</p>
+            <p>Informatics Student @ Universitas Negeri Surabaya</p>
+        </div>
+    </footer>
+
+    <!-- AOS (Animate on Scroll) Library JS CDN -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- JavaScripts -->
+    <script>
+        // Initialize AOS Library
+       // Initialize AOS Library
+        AOS.init({
+            once: false,   // Animasi bisa berulang setiap kali geser section
+            mirror: true,  // Mengaktifkan animasi berlawanan saat scroll ke atas/keluar layar
+            offset: 120,   // Jarak trigger animasi dari viewport
+            duration: 800, // Durasi animasi dalam milidetik
+            easing: 'ease-in-out'
+        });
+
+        // HOBBY CARDS LOGIC
+        const artCard = document.getElementById('artCard');
+        const artPreview = document.getElementById('artMediaPreview');
+
+        const psCard = document.getElementById('psCard');
+        const psPreview = document.getElementById('psMediaPreview');
+
+        const musicCard = document.getElementById('musicCard');
+        const musicPreview = document.getElementById('musicMediaPreview');
+
+        function resetCardStates() {
+            [artPreview, psPreview, musicPreview].forEach(prev => {
+                if (prev) {
+                    prev.classList.remove('opacity-100', 'max-h-[300px]');
+                    prev.classList.add('opacity-0', 'max-h-0');
+                }
+            });
+
+            [artCard, psCard, musicCard].forEach(card => {
+                if (card) {
+                    card.classList.remove('hobby-card-active', 'shift-down-card1', 'shift-down-card2');
+                }
+            });
+        }
+
+        artCard.addEventListener('mouseenter', () => {
+            resetCardStates();
+            artCard.classList.add('hobby-card-active');
+            artPreview.classList.remove('max-h-0', 'opacity-0');
+            artPreview.classList.add('max-h-[300px]', 'opacity-100');
+            psCard.classList.add('shift-down-card1');
+            musicCard.classList.add('shift-down-card1');
+        });
+
+        artCard.addEventListener('mouseleave', resetCardStates);
+
+        psCard.addEventListener('mouseenter', () => {
+            resetCardStates();
+            psCard.classList.add('hobby-card-active');
+            psPreview.classList.remove('max-h-0', 'opacity-0');
+            psPreview.classList.add('max-h-[300px]', 'opacity-100');
+            musicCard.classList.add('shift-down-card2');
+        });
+
+        psCard.addEventListener('mouseleave', resetCardStates);
+
+        musicCard.addEventListener('mouseenter', () => {
+            resetCardStates();
+            musicCard.classList.add('hobby-card-active');
+            musicPreview.classList.remove('max-h-0', 'opacity-0');
+            musicPreview.classList.add('max-h-[300px]', 'opacity-100');
+        });
+
+        musicCard.addEventListener('mouseleave', resetCardStates);
+
+
+        // 3D FLIP CARD ROTATOR (3 PHOTOS - 5 SECONDS INTERVAL)
+        const photoData = [
+            {
+                label: "Foto 1: Pasfoto Formal CV",
+                image: "foto formal.jpeg.jpeg",
+                badge: "Academic Profile",
+                badgeBg: "bg-blue-600/80",
+                title: "Amelia Nur Aisya",
+                subtitle: "S1 Teknik Informatika UNESA"
+            },
+            {
+                label: "Foto 2: Public Speaking & Presentasi",
+                image: "foto oska.jpeg",
+                badge: "Public Speaking",
+                badgeBg: "bg-amber-500/80",
+                title: "Kepemimpinan & Komunikasi",
+                subtitle: "Pengurus Organisasi & Presenter"
+            },
+            {
+                label: "Foto 3: Desain & Media Interaktif",
+                image: "foto yb.jpeg",
+                badge: "Creative Thinker",
+                badgeBg: "bg-purple-600/80",
+                title: "Desain & Media Interaktif",
+                subtitle: "Juara 1 Desain Poster Digital"
+            }
+        ];
+
+        let currentPhotoIndex = 0;
+        let isFlipped = false;
+
+        const flipCardInner = document.getElementById('flipCardInner');
+        const cardLabelText = document.getElementById('cardLabelText');
+
+        const frontImage = document.getElementById('frontImage');
+        const frontBadge = document.getElementById('frontBadge');
+        const frontTitle = document.getElementById('frontTitle');
+        const frontSub = document.getElementById('frontSub');
+
+        const backImage = document.getElementById('backImage');
+        const backBadge = document.getElementById('backBadge');
+        const backTitle = document.getElementById('backTitle');
+        const backSub = document.getElementById('backSub');
+
+        function updateCardIndicators(index) {
+            for (let i = 0; i < 3; i++) {
+                const dot = document.getElementById(`dot${i}`);
+                if (dot) {
+                    if (i === index) {
+                        dot.className = "w-3 h-3 rounded-full bg-[#f59e0b] scale-125 transition-all duration-300";
+                    } else {
+                        dot.className = "w-2.5 h-2.5 rounded-full bg-slate-600 transition-all duration-300";
+                    }
+                }
+            }
+        }
+
+        function triggerAutoFlip() {
+            const nextIndex = (currentPhotoIndex + 1) % 3;
+            const nextData = photoData[nextIndex];
+
+            if (!isFlipped) {
+                backImage.src = nextData.image;
+                backBadge.textContent = nextData.badge;
+                backBadge.className = `px-2.5 py-1 rounded-full ${nextData.badgeBg} backdrop-blur-md text-[10px] font-bold text-white uppercase tracking-wider`;
+                backTitle.textContent = nextData.title;
+                backSub.textContent = nextData.subtitle;
+
+                flipCardInner.classList.add('flipped');
+                isFlipped = true;
+            } else {
+                frontImage.src = nextData.image;
+                frontBadge.textContent = nextData.badge;
+                frontBadge.className = `px-2.5 py-1 rounded-full ${nextData.badgeBg} backdrop-blur-md text-[10px] font-bold text-white uppercase tracking-wider`;
+                frontTitle.textContent = nextData.title;
+                frontSub.textContent = nextData.subtitle;
+
+                flipCardInner.classList.remove('flipped');
+                isFlipped = false;
+            }
+
+            currentPhotoIndex = nextIndex;
+            
+            if (cardLabelText) {
+                cardLabelText.textContent = nextData.label;
+            }
+            updateCardIndicators(currentPhotoIndex);
+        }
+
+        setInterval(triggerAutoFlip, 5000);
+
+
+        // SHOOTING STARS & TWINKLE STARS CANVAS BACKGROUND ANIMATION
+        const canvas = document.getElementById('starCanvas');
+        const ctx = canvas.getContext('2d');
+
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            initStars();
+        });
+
+        let starsArray = [];
+        class TwinkleStar {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.size = Math.random() * 1.5 + 0.3;
+                this.alpha = Math.random();
+                this.speed = Math.random() * 0.02 + 0.005;
+                this.color = Math.random() > 0.3 ? '#93c5fd' : '#fef08a';
+            }
+
+            update() {
+                this.alpha += this.speed;
+                if (this.alpha > 1 || this.alpha < 0.1) {
+                    this.speed = -this.speed;
+                }
+            }
+
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = Math.max(0, Math.min(1, this.alpha));
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        let shootingStars = [];
+        class ShootingStar {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * width * 1.5 - width * 0.2;
+                this.y = -20;
+                this.len = Math.random() * 80 + 100;
+                this.speed = Math.random() * 10 + 12;
+                this.size = Math.random() * 1.5 + 1;
+                this.angle = Math.PI / 4; 
+                this.active = true;
+                this.color = Math.random() > 0.4 ? '#38bdf8' : '#f59e0b';
+            }
+
+            update() {
+                if (!this.active) return;
+
+                this.x += Math.cos(this.angle) * this.speed;
+                this.y += Math.sin(this.angle) * this.speed;
+
+                if (this.x > width + 100 || this.y > height + 100) {
+                    this.active = false;
+                }
+            }
+
+            draw() {
+                if (!this.active) return;
+
+                const tailX = this.x - Math.cos(this.angle) * this.len;
+                const tailY = this.y - Math.sin(this.angle) * this.len;
+
+                const gradient = ctx.createLinearGradient(this.x, this.y, tailX, tailY);
+                gradient.addColorStop(0, this.color);
+                gradient.addColorStop(0.5, 'rgba(56, 189, 248, 0.4)');
+                gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+
+                ctx.strokeStyle = gradient;
+                ctx.lineWidth = this.size;
+                ctx.beginPath();
+                ctx.moveTo(this.x, this.y);
+                ctx.lineTo(tailX, tailY);
+                ctx.stroke();
+
+                ctx.fillStyle = '#ffffff';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size * 1.2, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initStars() {
+            starsArray = [];
+            const starCount = Math.floor((width * height) / 3000);
+            for (let i = 0; i < starCount; i++) {
+                starsArray.push(new TwinkleStar());
+            }
+
+            shootingStars = [];
+            for (let i = 0; i < 3; i++) {
+                shootingStars.push(new ShootingStar());
+            }
+        }
+
+        function animateCanvas() {
+            ctx.clearRect(0, 0, width, height);
+
+            starsArray.forEach(star => {
+                star.update();
+                star.draw();
+            });
+
+            shootingStars.forEach(star => {
+                star.update();
+                star.draw();
+
+                if (!star.active && Math.random() < 0.015) {
+                    star.reset();
+                }
+            });
+
+            requestAnimationFrame(animateCanvas);
+        }
+
+        initStars();
+        animateCanvas();
+
+        // Typing Effect Loop
+        const typingText = document.getElementById('typingText');
+        const phrases = [
+            "Public Speaker & Creative Thinker",
+            "Tech & Software Enthusiast",
+            "Interactive Media Developer"
+        ];
+        let phraseIdx = 0;
+        let charIdx = 0;
+        let isDeleting = false;
+
+        function typeLoop() {
+            const currentPhrase = phrases[phraseIdx];
+
+            if (isDeleting) {
+                typingText.textContent = currentPhrase.substring(0, charIdx - 1);
+                charIdx--;
+            } else {
+                typingText.textContent = currentPhrase.substring(0, charIdx + 1);
+                charIdx++;
+            }
+
+            let typeSpeed = isDeleting ? 40 : 80;
+
+            if (!isDeleting && charIdx === currentPhrase.length) {
+                typeSpeed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIdx === 0) {
+                isDeleting = false;
+                phraseIdx = (phraseIdx + 1) % phrases.length;
+            }
+
+            setTimeout(typeLoop, typeSpeed);
+        }
+
+        typeLoop();
+
+        // Mobile Menu Drawer Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
